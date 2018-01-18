@@ -1,0 +1,38 @@
+Vcc is 5V
+
+PD443X        to       74HC595
+19(D0)                 15(Q0)     
+18(D1)                 1(Q1)
+17(D2)                 2(Q2)
+16(D3)                 3(Q3)
+15(D4)                 4(Q4)
+14(D5)                 5(Q5)
+13(D6)                 6(Q6)
+12(D7)                 7(Q7)
+
+PD443X        to       Arduino
+9(A0)                  4
+8(A1)                  5
+7(A2)                  6
+6(CE1)                 7
+4(RST)                 8
+11(WR)                 9
+
+74HC595       to       Arduino
+12(Latch)              10
+11(clock)              13
+14(data)               12
+
+74HC595       
+8(GND)        to   GND 
+16(Vcc)       to   Vcc
+13(OE)        to   GND
+10(MR)        to   Vcc
+
+PD443X
+1(RD)              AirWire(Im reading datasheet to use read feature)
+2(CLK I?O)         AirWire(im reading datasheet to use External clock and multiple display )
+3(CLKSEL)     to   GND
+6(CE0)        to   GND (Also read reson fron pin2)
+10(GND)       to   GND (You know dat (Big Shaq sound) 
+20(Vcc)       to   Vcc
