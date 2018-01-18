@@ -1,0 +1,4 @@
+DispPin                    KEYWORD1
+SendByte                   KEYWORD2
+ClrDisp                    KEYWORD2       
+SendStringScrolling        KEYWORD2
