@@ -1,4 +1,4 @@
-#ifndef    PD443X_h
+#ifndef   PD443X_h
 #define   PD443X_h
 
 #include "Arduino.h"
@@ -10,6 +10,9 @@ public:
      void SendByte(char a,byte column); 
      void ClrDisp();
      void SendStringScroll(String text,int Speed);
+     void SetBrigthness(int B);
+     void CtrlWord(char X);
+     void LampTest(int tog);
 private:
   int _Adr0;
   int _Adr1;
