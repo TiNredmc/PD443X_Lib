@@ -79,3 +79,32 @@ delay(Speed);
 }
 ClrDisp();
 }
+
+void PD443X::CtrlWord(char X)
+{
+digitalWrite(_WR,LOW);
+digitalWrite(_CE,LOW);
+digitalWrite(_Adr2,LOW);
+digitalWrite(_latch,LOW);
+shiftOut(_data,_clock,MSBFIRST,X);
+digitalWrite(_latch,HIGH);
+digitalWrite(_WR,HIGH);
+digitalWrite(_CE,HIGH);
+digitalWrite(_Adr2,LOW);
+}
+void PD443X::LampTest(int tog)
+{
+if (tog == 1){
+digitalWrite(_WR,LOW);
+digitalWrite(_CE,LOW);
+digitalWrite(_Adr2,LOW);
+digitalWrite(_latch,LOW);
+shiftOut(_data,_clock,MSBFIRST,0x40);
+digitalWrite(_latch,HIGH);
+digitalWrite(_WR,HIGH);
+digitalWrite(_CE,HIGH);
+digitalWrite(_Adr2,LOW);
+}else if(tog == 0){
+ClrDisp();
+}else if (tog != 1 && tog != 0){}
+}
