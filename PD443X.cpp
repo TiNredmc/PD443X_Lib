@@ -11,7 +11,7 @@
   int _clock;
   int _data;
 
-PD443X::PD443X(int Adr0,int Adr1,int Adr2,int CE,int RST,int WR,int latch,int clock,int data)
+PD443X::PD443X(int Adr0,int Adr1,int Adr2,int CE,int RST,int               WR,int latch,int clock,int data)
 {
 _Adr0 = Adr0;
 _Adr1 = Adr1;
@@ -37,7 +37,7 @@ pinMode(data ,OUTPUT);
 void PD443X::SendByte(char a,byte column)
 {
 digitalWrite(_WR,LOW);
-digitalWrite(_CE,HIGH);
+digitalWrite(_CE,LOW);
 digitalWrite(_Adr2,HIGH);
 digitalWrite(_Adr0, column >> 0& B1);
 digitalWrite(_Adr1, column >> 1& B1);
@@ -45,20 +45,20 @@ digitalWrite(_latch,LOW);
 shiftOut(_data,_clock,MSBFIRST,a);
 digitalWrite(_latch,HIGH);
 digitalWrite(_WR,HIGH);
-digitalWrite(_CE,LOW);
+digitalWrite(_CE,HIGH);
 digitalWrite(_Adr2,LOW);
 }
 
 void PD443X::ClrDisp()
 {
 digitalWrite(_WR,LOW);
-digitalWrite(_CE,HIGH);
+digitalWrite(_CE,LOW);
 digitalWrite(_Adr2,LOW);
 digitalWrite(_latch,LOW);
 shiftOut(_data,_clock,MSBFIRST,0x80);
 digitalWrite(_latch,HIGH);
 digitalWrite(_WR,HIGH);
-digitalWrite(_CE,LOW);
+digitalWrite(_CE,HIGH);
 digitalWrite(_Adr2,HIGH);
 }
 
@@ -78,6 +78,20 @@ SendByte(b[4+i],0);
 delay(Speed);
 }
 ClrDisp();
+}
+
+void PD443X::SetBrigthness(int B) 
+// B need to be 0,1,2 or 3 only
+{
+digitalWrite(_WR,LOW);
+digitalWrite(_CE,LOW);
+digitalWrite(_Adr2,LOW);
+digitalWrite(_latch,LOW);
+shiftOut(_data,_clock,MSBFIRST,B);
+digitalWrite(_latch,HIGH);
+digitalWrite(_WR,HIGH);
+digitalWrite(_CE,HIGH);
+digitalWrite(_Adr2,LOW);
 }
 
 void PD443X::CtrlWord(char X)
