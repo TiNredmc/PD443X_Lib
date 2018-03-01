@@ -120,5 +120,7 @@ digitalWrite(_CE,HIGH);
 digitalWrite(_Adr2,LOW);
 }else if(tog == 0){
 ClrDisp();
-}else if (tog != 1 && tog != 0){}
+}else if (tog != 1 && tog != 0){
+//Do nothing...
+}
 }
